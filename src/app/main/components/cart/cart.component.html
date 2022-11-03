@@ -1,0 +1,61 @@
+<!-- <app-header [productNumbers]="cartProducts.length"></app-header> -->
+<div class="cartBox">
+    <h1 class="text-warning">Shopping Cart</h1>
+    <div class="headCart">
+        <p class="lead">You have <label class="text-warning">{{cartProducts.length}}</label> items in your cart</p>
+        <span class="text-danger cart-header" (click)="clearAll()">clear Shopping Cart</span>
+    </div>
+    <table class="table table-striped">
+        <!-- <thead>
+            <tr>
+                <th></th>
+                <th>Product</th>
+                <th>Price</th>
+                <th style="width: 25%; text-align: center;">Quantity</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead> -->
+        <tbody style="background-color: #fff;">
+            <tr *ngFor="let product of cartProducts; let i = index">
+                <td><img src="{{product.item.image}}" alt=""></td>
+                <td>{{product.item.description}}</td>
+                <td>{{product.item.price | currency}}</td>
+                <td>
+                    <div class="quantity">
+                        <button class="btn btn-outline-warning" (click)="mins(i)">-</button>
+                        <input type="number" class="form-control text-center" min="1" (change)="detectChanges()" [(ngModel)]="product.quantity">
+                        <button class="btn btn-outline-warning" (click)="plus(i)">+</button>
+                    </div>
+                </td>
+                <td>{{product.item.price * product.quantity | currency}}</td>
+                <td>
+                    <button class="btn btn-outline-danger" (click)="deleteProduct(i)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Total : {{total | currency}}</th>
+                <th><button class="btn btn-outline-success" (click)="order()">Order Now</button></th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="alert alert-success" role="alert" *ngIf="success"><strong>Well Done!</strong> Your Order is Successfully Sent ✔</div>
+
+
+<hr>
+
+
+<div class="row"  *ngFor="let product of cartProducts; let i = index">
+    <div class="col-md-3">
+        <img src="{{product.image}}" alt="">
+    </div>
+    <div class="col-md-9">
+
+    </div>
+</div>

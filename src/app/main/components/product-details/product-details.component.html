@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{product.image}}" alt="">
+        </div>
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+            <h3>{{product.name}}</h3>
+            <h6 class="my-3">{{product.description}}</h6>
+            <div class="rated w-100 d-flex align-items-center">
+                <ngb-rating [max]="5" [(rate)]="product.stars" [readonly]="true"
+                    style="color: rgb(255, 196, 0); font-size: 20px;"></ngb-rating>
+                <span style="font-size: 13px; margin-left: 10px;">{{product.vote}} Voted</span>
+            </div>
+            <h6 class="my-3">{{product.price | currency}}</h6>
+            <button class="btn btn-warning w-100" *ngIf="!added" (click)="added = true">Add To Cart</button>
+            <div class="add d-flex" *ngIf="added">
+                <input type="number" class="form-control" placeholder="Amount..." [(ngModel)]="quantity">
+                <button class="btn btn-dark mx-5" (click)="add(); added = false">Add</button>
+            </div>
+        </div>
+    </div>
+</div>

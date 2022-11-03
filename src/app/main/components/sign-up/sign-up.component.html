@@ -1,0 +1,66 @@
+<div class="container d-flex flex-column">
+    <form [formGroup]="Form">
+        <h2 class="text-center">Sign up</h2>
+        <div class="wrapper my-3">
+            <input type="text" required="required" formControlName="name">
+            <span *ngIf="name?.invalid && name?.touched && name?.dirty"
+                style="position: absolute; top: 10px; right: 20px; color: rgb(255, 0, 0);">
+                <span *ngIf="name?.getError('required')!=null">name required</span>
+                <span *ngIf="name?.errors!['minlength']">name must containe 3 letters or more</span>
+            </span>
+
+            <span *ngIf="name?.pristine" style="position: absolute; top: 10px; right: 20px; color: #aaa;">Enter your
+                name</span>
+            <label>Name</label>
+        </div>
+        <div class="wrapper my-3">
+            <input type="text" required="required" formControlName="email">
+            <span *ngIf="email?.pristine" style="position: absolute; top: 10px; right: 20px; color: #aaa;">Enter your
+                email</span>
+            <span *ngIf="email?.invalid && email?.touched && email?.dirty"
+                style="position: absolute; top: 10px; right: 20px; color: rgb(255, 0, 0);">
+                <span *ngIf="email?.getError('required')!=null">email required</span>
+                <span *ngIf="email?.getError('pattern')!=null">invalid email</span>
+                <!-- <span *ngIf="email?.getError('pattern')!=null">wrong pattern</span> -->
+            </span>
+            <label>Email</label>
+        </div>
+        <div class="wrapper my-3">
+            <input type="password" required="required" formControlName="password1">
+            <span *ngIf="password1?.pristine" style="position: absolute; top: 10px; right: 20px; color: #aaa;">Enter
+                password</span>
+            <span *ngIf="password1?.invalid && password1?.touched && password1?.dirty"
+                style="position: absolute; top: 10px; right: 20px; color: rgb(255, 0, 0);">
+                <span *ngIf="password1?.getError('required')!=null">password required</span>
+                <span *ngIf="password1?.getError('minlength')!=null">password less than 8 letters</span>
+                <span *ngIf="password1?.getError('maxlength')!=null">password more than 16 letters</span>
+            </span>
+            <label>Password</label>
+        </div>
+        <div class="wrapper my-3">
+            <input type="password" required="required" formControlName="password2">
+            <span *ngIf="password2?.pristine" style="position: absolute; top: 10px; right: 20px; color: #aaa;">Confirm
+                password</span>
+            <span *ngIf="password2?.invalid && password2?.touched && password2?.dirty"
+                style="position: absolute; top: 10px; right: 20px; color: rgb(255, 0, 0);">
+                <span *ngIf="password2?.getError('required')!=null">confirm password required</span>
+                <span *ngIf="password2?.getError('Match')!=null">password not match</span>
+            </span>
+            <label>Confirm Password</label>
+        </div>
+
+        <div class="button">
+            <button class="btn btn-warning w-100" [disabled]="Form.invalid" (click)="signUp()">Sign up</button>
+        </div>
+
+        <div class="signIn mt-3 text-center">
+            <a routerLink="/form" style="cursor: pointer; color:rgb(60, 60, 250);">Back to Sign in?</a>
+        </div>
+    </form>
+
+    <div *ngIf="success" class="alert alert-success d-flex align-items-center mt-4 px-3" style="height: 50px;"
+        role="alert">
+        <b class="mx-1"> Well Done ! </b>You have registered. <a routerLink="" class="alert-link mx-1"> Go Shopping
+            ?</a>
+    </div>
+</div>

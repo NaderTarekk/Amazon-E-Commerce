@@ -1,0 +1,34 @@
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+.container{
+    width: 80% !important;
+    margin: 0 auto !important;
+}
+.swiper{
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+// Scrollbar
+::-webkit-scrollbar {
+    width: 0.6rem;
+    border-radius: .5rem;
+    background: hsl(79, 4%, 15%);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: .5rem;
+    background: hsl(49, 100%, 51%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    border-radius: .5rem;
+    background: hsl(49, 90%, 45%);
+}

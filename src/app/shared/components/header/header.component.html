@@ -1,0 +1,48 @@
+<header>
+    <nav>
+        <div class="header-left">
+            <div class="logo-position">
+                <img src="./assets/logo.png" routerLink="" style="font-size: 120px; cursor: pointer;" class="logo">
+            </div>
+            <div class="position">
+                <div class="i">
+                    <i class="uil uil-map-marker"></i>
+                </div>
+                <div class="position-content">
+                    <p>Deliver to</p>
+                    <h5>Egypt</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-middle w-75 mx-4 d-flex">
+            <select (change)="changeCategory($event)" style="cursor: pointer;">
+                <option value="" class="text-center" selected>All</option>
+                <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
+            </select>
+            <div class="input">
+                <input type="text" placeholder="write Electronics, Fashion, Accessory, toy..." [(ngModel)]="searchText">
+                <button (click)="search()"><i class="uil uil-search"></i></button>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <div class="login d-flex align-items-center justify-content-between">
+                <p routerLink="/form" style="cursor: pointer;" *ngIf="!appear">Hello, <span>sign in </span> <i
+                        class="fa-solid fa-caret-down"></i></p>
+                <div class="compare"></div>
+                <h5 routerLink="/cart" style="cursor: pointer;"><i
+                        class="uil uil-shopping-cart"><span>{{cartNumber}}</span></i>Cart</h5>
+            </div>
+        </div>
+    </nav>
+    <div class="second-nav ">
+        <ul>
+            <li><a routerLink="">All</a></li>
+            <li><a routerLink="/search/electronics">Electronics</a></li>
+            <li><a routerLink="/search/fashion">Fashion</a></li>
+            <li><a routerLink="/search/home Decor">Home Decor</a></li>
+            <li><a routerLink="/search/toys">Toys</a></li>
+        </ul>
+    </div>
+</header>

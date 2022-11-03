@@ -1,0 +1,69 @@
+<!-- <input type="text" placeholder="write something" [formControl]="theValue">
+<button (click)="setValue()">set</button>
+<hr>
+<form [formGroup]="profile" (ngSubmit)="submit()">
+    <label>
+        First Name : <input type="text" placeholder="First name" formControlName="firstName">
+        <span style="color: red;" *ngIf="FirstName?.invalid && FirstName?.touched && FirstName?.dirty">first name is invalid</span>
+        <span style="color: rgb(136, 134, 134);" *ngIf="FirstName?.pristine">please enter your name</span>
+    </label>
+    <label>
+        Last Name : <input type="text" placeholder="Last name" formControlName="lastName">
+    </label>
+    <label>
+        Email : <input type="text" placeholder="Email" formControlName="email">
+        <span style="color: red;" *ngIf="email?.invalid && email?.touched && email?.dirty">
+            <span *ngIf="email?.errors!['pattern']">wrong pattern </span>
+            <span *ngIf="email?.errors!['email']"> wrong email</span>
+        </span>
+    </label>
+    <button [disabled]="profile.invalid">submit</button>
+    <button (click)="update()" type="button">update value</button>
+</form>
+form status : {{profile.status}}
+ -->
+<div class="container d-flex flex-column">
+    <form [formGroup]="Form" (ngSubmit)="onSubmit()">
+        <h2 class="text-center">Sign in</h2>
+        <div class="wrapper my-3">
+            <input type="text" required="required" formControlName="email">
+            <span style="position: absolute; top: 10px; right: 20px; color: red; font-size: 13px;"
+                *ngIf="email?.invalid && email?.dirty && email?.touched">
+                <span *ngIf="email?.errors!['pattern']" style="color: red;">
+                    <i class="fa-solid fa-circle-xmark"></i> Wrong Pattern </span>
+                <span *ngIf="email?.errors!['email']" style="color: red;">
+                    <i class="fa-solid fa-circle-xmark"></i> Wrong email </span>
+            </span>
+            <span *ngIf="email?.valid" style="color: rgb(0, 255, 42); position: absolute; top: 10px; right: 20px;">
+                <i class="fa-solid fa-circle-check"></i> Good Email</span>
+            <span *ngIf="email?.pristine" style="position: absolute; top: 10px; right: 20px; color: #aaa;">Enter your
+                email</span>
+            <label>Email</label>
+        </div>
+        <div class="wrapper my-3">
+            <input type="password" required="required" formControlName="password">
+            <span style="position: absolute; top: 10px; right: 20px; color: red; font-size: 13px;"
+                *ngIf="password?.invalid && password?.dirty && password?.touched">
+                <span style="color: red;">
+                    <i class="fa-solid fa-circle-xmark"></i> password must contain 8 or more char </span>
+            </span>
+            <span *ngIf="password?.valid" style="color: rgb(0, 255, 42); position: absolute; top: 10px; right: 25px;">
+                <i class="fa-solid fa-circle-check"></i> Good Password</span>
+            <span *ngIf="password?.pristine" style="position: absolute; top: 10px; right: 20px; color: #aaa;">Enter your
+                password</span>
+            <label>Password</label>
+        </div>
+        <div class="button">
+            <button class="btn btn-warning w-100" [disabled]="Form.invalid">Sign in</button>
+        </div>
+        <div class="signUp mt-3 text-center">
+            <a routerLink="/signUp">Sign up?</a>
+        </div>
+    </form>
+
+    <div *ngIf="success" class="alert alert-success d-flex align-items-center mt-4 px-3" style="height: 50px;" role="alert">
+        <b class="mx-1"> Well Done ! </b>You have registered. <a routerLink="" class="alert-link mx-1"> Go Shopping ?</a>
+    </div>
+</div>
+
+

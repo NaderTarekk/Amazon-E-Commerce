@@ -1,0 +1,21 @@
+<div class="container">
+    <select class="form-control w-25 my-3" (change)="changeSelected($event)">
+        <option value="All" selected>All</option>
+        <option value="{{category}}" *ngFor="let category of categories">{{category}}</option>
+    </select>
+    <div class="row">
+        <div class="col-md-12 bg-light my-2 p-3" style="cursor: pointer;" *ngFor="let fash of products" routerLink="/Fdetails/{{fash.id}}">
+            <div class="row d-flex align-items-center bg-light">
+                <div class="col-md-3 text-center">
+                    <img src="{{fash.image}}" style="width: 100px; height: auto;">
+                </div>
+                <div class="col-md-9">
+                    <h6>{{fash.description}}</h6>
+                    <ngb-rating [max]="5" [(rate)]="fash.stars"  style="color: rgb(255, 196, 0); font-size: 25px;"
+                        [readonly]="true"></ngb-rating>
+                    <p>{{fash.price | currency}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

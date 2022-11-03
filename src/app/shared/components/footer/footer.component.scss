@@ -1,0 +1,26 @@
+p {
+    font-size: 12px;
+}
+
+.footerUp {
+    transition: .3s;
+
+    &:hover {
+        cursor: pointer;
+        opacity: .7;
+    }
+}
+
+.footerLow {
+    
+    display: block;
+    justify-content: center;
+
+    h6{
+        font-size: 12px;
+    }
+    p {
+        font-size: 10px;
+        color: #999;
+    }
+}

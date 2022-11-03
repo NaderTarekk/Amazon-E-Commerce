@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 bg-light my-2 p-3" style="cursor: pointer;" routerLink="/Ddetails/{{product.id}}" *ngFor="let product of products">
+            <div class="row d-flex align-items-center bg-light">
+                <div class="col-md-3 text-center">
+                    <img src="{{product.image}}" style="width: 100px; height: auto;">
+                </div>
+                <div class="col-md-9">
+                    <h6>{{product.description}}</h6>
+                    <ngb-rating [max]="5" [(rate)]="product.stars" style="color: rgb(255, 196, 0); font-size: 25px;" [readonly]="true">
+                    </ngb-rating>
+                    <p>{{product.price | currency}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
